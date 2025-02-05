@@ -4,16 +4,21 @@
 
 ## Features
 
-- Automatic generation of Payloads:** It uses tools such as PHPGGC to generate serialized PHP objects containing remote code execution (RCE) payloads.
+- **Automatic generation of Payloads:** It uses tools such as PHPGGC to generate serialized PHP objects containing remote code execution (RCE) payloads.
   
 - **Automatic Cookie Signing:** Generates malicious cookies correctly signed using a secret key obtained from a deserialization vulnerability.
   
 - **Simple Interface:** Generates payloads and cookies with a single command, which facilitates the exploitation process.
 
+- **Multiple Exploitation Methods:** Now supports payload generation for PHP, Ruby, and Java deserialization vulnerabilities.
+
+- **Flexibility and Extensibility:** Users can generate custom payloads for exploitation using predefined chains in multiple languages (PHP, Ruby, Java).
+
 ## Requirements
 
 - Python 3.X
-- PHPGGC 
+- PHPGGC
+- Docker (for Ruby and Java payload generation)
 
 ## Installation
 
@@ -33,41 +38,27 @@
 
    `sudo apt install phpggc -y`
 
-## Use
-
-1. **Generate a Payload:**
-   
-   To generate a malicious payload and obtain the signed cookie, execute:
-
-   `python3 rCeChAiN.py`
-
-2. **Configuration:**
-
-   During execution, you will be prompted to enter:
-   - The secret key `SECRET_KEY` obtained from the vulnerable environment.
-   - The Burp Collaborator server or the server of your choice to execute the commands.
-  
-     
-
-3. **End:**
-
-   Once the payload is generated, the cookie will be copied to the clipboard and saved in a file named `cookies.txt`. 
-
 ## Example of Use
 
-1. **Enter SECRET_KEY y Burp Collaborator:**
+1. **rCeChAiN**
 
    `python3 rCeChAiN.py`
 
    ![Paso 1](./images/1.png)
 
-2. **Payload generation:**
+   - After running python3 rCeChAiN.py, you can choose from the following exploitation methods:
+
+     - PHP - Pre-built gadget chain (SECRET_KEY)
+     - JAVA - Deserialization with Apache Commons
+     - RUBY - Pre-built gadget chain 2.X 3.X
+
+3. **PHP Payload Generation:**
    
    - All Cookies generated will be saved in cookies.txt and copied to your clipboard.
   
    ![Paso 2](./images/2.png)
 
-3. **Use in Burpsuite ( Intruder ):**
+   **Use in Burpsuite ( Intruder ):**
 
    ![Paso 3](./images/3.png)
 
@@ -75,25 +66,38 @@
      
    ![Paso 4](./images/4.png)
 
-4. **Customization:**
+   **Customization:**
    - It will ask us if any of them have been successfully exploited and if so, it will allow us to do so.
   
    ![Paso 5](./images/5.png)
    
-   1 - Data exfiltration of a particular file
+   - **Data exfiltration of a particular file**
 
    ![Paso 6](./images/6.png)
 
    ![Paso 7](./images/7.png)
 
-   2 - Custom payload creation
+   - **Custom payload creation**
 
    ![Paso 8](./images/8.png)
 
    ![Paso 9](./images/9.png)
 
    Calling the latter if successfully executed to success.burpcollaborator
-   
+
+4. **Java Deserialization with Apache Commons:**
+
+   - If you select Java, payloads will be generated using a custom tool that i created in another project specifically for Java deserialization vulnerabilities. This tool automates the process of generating malicious Java objects.
+
+5. **Ruby Payload Generation:**
+
+   - Ruby payloads are generated using pre-built gadget chains for versions 2.x and 3.x.
+  
+**Customization:**
+You will be asked if any payload has been successfully executed, allowing for additional actions such as:
+
+   - Data exfiltration of a particular file
+   - Custom payload creation 
 
 ## Contributions
 
