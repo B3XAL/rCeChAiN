@@ -5,8 +5,8 @@ import os
 GREEN = "\033[92m"
 WHITE = "\033[97m"
 RESET = "\033[0m"
-ORANGE = "\033[38;5;214m"  # Color naranja (similar al naranja)
-RED = "\033[91m"           # Color rojo
+ORANGE = "\033[38;5;214m"  
+RED = "\033[91m"           
 
 
 def get_payload():
