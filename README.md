@@ -1,6 +1,6 @@
 # rCeChAiN
 
-**rCeChAiN** is a tool that facilitates the exploitation of deserialization vulnerabilities in PHP applications. It allows to generate and sign malicious cookies to execute remote code by exploiting pre-built gadget strings. It is designed to be used in security testing environments, such as CTFs or penetration tests, to attack PHP applications vulnerable to this type of exploitation.
+**rCeChAiN** is a tool that facilitates the exploitation of deserialization vulnerabilities. It allows to generate and sign malicious cookies to execute remote code by exploiting pre-built gadget strings. It is designed to be used in security testing environments, such as CTFs or penetration tests, to attack PHP applications vulnerable to this type of exploitation.
 
 ## Features
 
