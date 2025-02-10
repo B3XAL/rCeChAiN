@@ -6,6 +6,8 @@ import json
 import pyperclip
 import pyfiglet
 
+pyperclip.set_clipboard("xclip")
+
 # Colores para salida en consola
 GREEN = "\033[92m"
 WHITE = "\033[97m"
