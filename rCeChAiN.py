@@ -24,7 +24,8 @@ def show_menu():
     print(f"{ORANGE}1.{RESET} PHP - Pre-built gadget chain (SECRET_KEY)")
     print(f"{ORANGE}2.{RESET} JAVA - Deserialization with Apache Commons")
     print(f"{ORANGE}3.{RESET} RUBY - Pre-built gadget chain 2.X 3.X")
-    print(f"{RED}4. Exit{RESET}\n")
+    print(f"{ORANGE}4.{RESET} Identify serialized format")
+    print(f"{RED}5. Exit{RESET}\n")
 
 # Function to execute external scripts and return to menu
 def run_script(script_name):
@@ -49,6 +50,8 @@ while True:
     elif option == "3":
         run_script("ruby_pre-built_gadget_chain.py")
     elif option == "4":
+        run_script("identify.py")
+    elif option == "5":
         print(f"\n{RED}Exiting...{RESET}\n")
         break
     else:
