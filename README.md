@@ -27,22 +27,24 @@
    `git clone https://github.com/B3XAL/rCeChAiN.git`
 
    `cd rCeChAiN`
+
+   `chmod +x rCeChAiN.py apache_commons.sh php_pre-built_gadget_chain.py ruby_pre-built_gadget_chain.py`
    
-2. **Install dependencies:**
+3. **Install dependencies:**
 
    Make sure you have Python 3.x and pip installed..
 
    `pip install -r requirements.txt`
    
-3. **Install PHPGGC:**
+4. **Install PHPGGC & xclip:**
 
-   `sudo apt install phpggc -y`
+   `sudo apt install phpggc xclip -y`
 
 ## Example of Use
 
 1. **rCeChAiN**
 
-   `python3 rCeChAiN.py`
+   `sudo python3 rCeChAiN.py`
 
    ![Paso 1](./images/1.png)
 
