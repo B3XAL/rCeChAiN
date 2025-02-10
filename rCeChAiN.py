@@ -12,7 +12,7 @@ RED = "\033[91m"           # Color rojo
 def banner():
     ascii_banner = pyfiglet.figlet_format("rCeChAiN")
     print(f"{GREEN}{ascii_banner}{RESET}")
-    print("V1.1")
+    print("V1.2")
     print("by b3xal")
 #    print("-" * 80)
 
