@@ -14,6 +14,9 @@
 
 - **Flexibility and Extensibility:** Users can generate custom payloads for exploitation using predefined chains in multiple languages (PHP, Ruby, Java).
 
+- **Serialized Cookie Detection:** Identify and detect serialized cookies in various formats (PHP, Ruby, Java) by decoding and checking the format, helping users understand the serialization method used in web applications.
+  
+
 ## Requirements
 
 - Python 3.X
@@ -28,7 +31,7 @@
 
    `cd rCeChAiN`
 
-   `chmod +x rCeChAiN.py apache_commons.sh php_pre-built_gadget_chain.py ruby_pre-built_gadget_chain.py`
+   `chmod +x rCeChAiN.py apache_commons.sh php_pre-built_gadget_chain.py ruby_pre-built_gadget_chain.py identify.py`
    
 3. **Install dependencies:**
 
