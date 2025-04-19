@@ -22,7 +22,7 @@ def detect_serialized_cookie(token):
 
     # RUBY SERIALIZED DETECTION
     elif token.startswith("BAh"):
-        print(f"→ Probable {GREEN}Ruby Serialized Cookie (base64 encoded){RESET}")
+        print(f"→ Probable {GREEN}Ruby Marshal-serialized object (base64 encoded){RESET}")
         return
 
     # Try URL decoding
